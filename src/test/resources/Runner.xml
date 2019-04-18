@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="REST API Test Automation">
+    <!--Platform-->
+    <parameter name="ExecutionPlatform" value="Web"/>
+
+    <!--Cloud-->
+    <parameter name="useCloudEnv" value="false"/>
+    <parameter name="cloudEnvName" value="browserstack"/>
+
+    <!--Mobile & Web-->
+    <parameter name="os" value="Mac"/>
+    <parameter name="version" value="9"/>
+
+    <!--Web-->
+    <parameter name="url" value="https://www.facebook.com"/>
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserVersion" value="53.0"/>
+
+    <!--Mobile-->
+
+    <parameter name="deviceName" value="Android SDK"/>
+    <parameter name="UDID" value="emulator-5554"/>
+    <parameter name="appName" value="eBay.apk"/>
+
+    <test name="Tests" preserve-order="true">
+        <classes>
+            <class name="test_api_1.Mobile"/>
+        </classes>
+    </test>
+
+</suite>
