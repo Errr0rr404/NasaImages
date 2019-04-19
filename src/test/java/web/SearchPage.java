@@ -4,6 +4,7 @@ import base.ExtentTestManager;
 import base.SetupFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class SearchPage extends SetupFactory {
 
@@ -11,7 +12,7 @@ public class SearchPage extends SetupFactory {
     public WebElement searchBox;
 
     @FindBy(xpath = "//*[contains(text(),'Images')]")
-    public WebElement imageVel;
+    public WebElement imageOption;
 
     @FindBy(xpath = "//*[contains(text(), 'Audio')]")
     public WebElement audioOption;
@@ -31,12 +32,7 @@ public class SearchPage extends SetupFactory {
     @FindBy(xpath = "//*[@class='button']")
     public WebElement buttonSearch;
 
-    @FindBy(xpath = "//div[@id='searchFor-Videos']/a[@class='checked']")
-    public WebElement checkVideos;
-    @FindBy(xpath = "//div[@id='searchFor-Audio']/a[@class='checked']")
-    public WebElement checkAudio;
-    @FindBy(xpath = "//div[@id='searchFor-Images']/a[@class='checked']")
-    public WebElement checkImages;
+
 
     public void searchFor(String value) {
         searchBox.click();
@@ -47,15 +43,27 @@ public class SearchPage extends SetupFactory {
 
     public void checkBox(String value) {
         if (value.equalsIgnoreCase("images")) {
-            checkVideos.click();
-            checkAudio.click();
+            videoOption.click();
+            audioOption.click();
         } else if (value.equalsIgnoreCase("videos")) {
-            checkImages.click();
-            checkAudio.click();
+            imageOption.click();
+            audioOption.click();
         } else if (value.equalsIgnoreCase("audio")) {
-            checkImages.click();
-            checkAudio.click();
+            imageOption.click();
+            videoOption.click();
         }
         ExtentTestManager.log(value.toUpperCase() + " has been selected", this.getClass());
+    }
+
+    public void validateTitle(){
+        String expected = "NASA Image and Video Library";
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String actual = webDriver.getTitle();
+        Assert.assertEquals(actual, expected);
+        ExtentTestManager.log(actual + " : Title has been validated", this.getClass());
     }
 }

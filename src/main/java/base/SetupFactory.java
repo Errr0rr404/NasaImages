@@ -1,10 +1,8 @@
 package base;
 
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +54,6 @@ public class SetupFactory {
         extent = ExtentTestManager.getInstance();
     }
 
-
     //Driver Initialization
     @BeforeMethod
     public void startExtent(Method method) {
@@ -77,7 +74,7 @@ public class SetupFactory {
         if (result.getStatus() == 1) {
             ExtentTestManager.getTest().log(LogStatus.PASS, "TEST CASE PASSED : " + result.getName());
         } else if (result.getStatus() == 2) {
-            ExtentTestManager.getTest().log(LogStatus.FAIL, "TEST CASE FAILED : " + result.getName());
+            ExtentTestManager.getTest().log(LogStatus.FAIL, "TEST CASE FAILED : " + result.getName()+" :: "+getStackTrace(result.getThrowable()));
         } else if (result.getStatus() == 3) {
             ExtentTestManager.getTest().log(LogStatus.SKIP, "TEST CASE SKIPPED : " + result.getName());
         }
