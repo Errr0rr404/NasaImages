@@ -1,8 +1,9 @@
-package api;
+package executor;
 
+import api.SearchEndpoints;
 import org.testng.annotations.Test;
 
-public class APIUnitTest extends SearchEndpoints {
+public class APIUnitTest extends api.SearchEndpoints {
 
     @Test
     public void qTest() {

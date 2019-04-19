@@ -1,4 +1,4 @@
-package web;
+package pages;
 
 import base.ExtentTestManager;
 import base.SetupFactory;

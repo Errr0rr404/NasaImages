@@ -1,11 +1,13 @@
-package web;
+package executor;
 
 import base.SetupFactory;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.ResultsPage;
+import pages.SearchPage;
 
-public class UnitTests extends SetupFactory {
+public class WebUnitTests extends SetupFactory {
     SearchPage searchPage;
     ResultsPage resultsPage;
 

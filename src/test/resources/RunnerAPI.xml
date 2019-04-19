@@ -8,7 +8,7 @@
     <parameter name="browserName" value="chrome"/>
     <test name="Tests" preserve-order="true">
         <classes>
-            <class name="api.APIUnitTest"/>
+            <class name="executor.APIUnitTest"/>
         </classes>
     </test>
 
