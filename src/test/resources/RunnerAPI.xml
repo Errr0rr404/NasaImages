@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="NASA REST API Test Automation">
+    <parameter name="ExecutionPlatform" value="API"/>
+    <parameter name="os" value="Mac"/>
+    <parameter name="url" value="https://images.nasa.gov/"/>
+    <parameter name="browserName" value="chrome"/>
+    <test name="Tests" preserve-order="true">
+        <classes>
+            <class name="api.APIUnitTest"/>
+        </classes>
+    </test>
+
+</suite>
