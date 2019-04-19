@@ -12,7 +12,6 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -28,7 +27,7 @@ public class SetupFactory {
     public static ExtentReports extent;
     public static String platform = null;
     public static WebDriver webDriver;
-    public static SoftAssert softAssert = new SoftAssert();
+
     //screenshot
     public static String captureScreenshot(WebDriver driver, String screenshotName) {
 
@@ -46,7 +45,6 @@ public class SetupFactory {
         }
         return destination;
     }
-
 
     @BeforeSuite
     public void extentSetup(ITestContext context) {
@@ -74,7 +72,7 @@ public class SetupFactory {
         if (result.getStatus() == 1) {
             ExtentTestManager.getTest().log(LogStatus.PASS, "TEST CASE PASSED : " + result.getName());
         } else if (result.getStatus() == 2) {
-            ExtentTestManager.getTest().log(LogStatus.FAIL, "TEST CASE FAILED : " + result.getName()+" :: "+getStackTrace(result.getThrowable()));
+            ExtentTestManager.getTest().log(LogStatus.FAIL, "TEST CASE FAILED : " + result.getName() + " :: " + getStackTrace(result.getThrowable()));
         } else if (result.getStatus() == 3) {
             ExtentTestManager.getTest().log(LogStatus.SKIP, "TEST CASE SKIPPED : " + result.getName());
         }
@@ -119,7 +117,6 @@ public class SetupFactory {
 
 
     }
-
 
     public WebDriver getLocalDriver(String OS, String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {

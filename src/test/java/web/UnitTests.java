@@ -1,15 +1,14 @@
 package web;
 
-import base.ExtentTestManager;
 import base.SetupFactory;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class UnitTests extends SetupFactory {
     SearchPage searchPage;
     ResultsPage resultsPage;
+
     @BeforeMethod
     public void initialize() {
         searchPage = PageFactory.initElements(webDriver, SearchPage.class);
@@ -38,8 +37,7 @@ public class UnitTests extends SetupFactory {
     }
 
     @Test
-    public void titleValidation(){
-       searchPage.validateTitle();
-
+    public void titleValidation() {
+        searchPage.validateTitle();
     }
 }

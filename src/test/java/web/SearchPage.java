@@ -33,7 +33,6 @@ public class SearchPage extends SetupFactory {
     public WebElement buttonSearch;
 
 
-
     public void searchFor(String value) {
         searchBox.click();
         searchBox.sendKeys(value);
@@ -55,7 +54,7 @@ public class SearchPage extends SetupFactory {
         ExtentTestManager.log(value.toUpperCase() + " has been selected", this.getClass());
     }
 
-    public void validateTitle(){
+    public void validateTitle() {
         String expected = "NASA Image and Video Library";
         try {
             Thread.sleep(5000);

@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ResultsPage extends SetupFactory {
 
-
     @FindBy(xpath = "//*[@id=\"updated-search_preloader\"]")
     public WebElement loaderButton;
     @FindBy(xpath = "//*[@id=\"results-returned\"]")
