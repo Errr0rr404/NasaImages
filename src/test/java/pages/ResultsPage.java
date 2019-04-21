@@ -36,6 +36,11 @@ public class ResultsPage extends SetupFactory {
     @FindBy(linkText = "Previous")
     public WebElement previous;
 
+    /**
+     * This method will validate the result count
+     *
+     * @param value : the desired value to match with expected count
+     */
     public void resultValidationCount(String value) {
         while (loaderButton.isDisplayed()) {
             try {
@@ -57,6 +62,11 @@ public class ResultsPage extends SetupFactory {
         ExtentTestManager.log(actualResultCount + " has been validated", this.getClass());
     }
 
+    /**
+     * This method will change filter to desired parameter
+     *
+     * @param value : the desired value to change filter to
+     */
     public void changeFilterTo(String value) {
         if (value.equalsIgnoreCase("images")) {
             addImagesFilter.click();
@@ -69,6 +79,9 @@ public class ResultsPage extends SetupFactory {
         ExtentTestManager.log(value.toUpperCase() + " has been selected", this.getClass());
     }
 
+    /**
+     * This method will do finctional validation of both list and grid view
+     */
     public void listAndDetail() {
         gridView.click();
         listView.click();
@@ -76,6 +89,9 @@ public class ResultsPage extends SetupFactory {
         ExtentTestManager.log(listView.toString() + " & " + gridView.toString() + " has been selected", this.getClass());
     }
 
+    /**
+     * This method will click on next button and validate is previous is present in the next page
+     */
     public void nextButton() {
         next.click();
         if (previous.isDisplayed()) {

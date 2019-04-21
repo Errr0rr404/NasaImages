@@ -26,6 +26,11 @@ public class SearchPage extends SetupFactory {
     @FindBy(xpath = "/html//img[@id='logo']")
     public WebElement logo;
 
+    /**
+     * This method will click on search box & search for given parameter
+     *
+     * @param value : the desired value to search
+     */
     public void searchFor(String value) {
         searchBox.click();
         searchBox.sendKeys(value);
@@ -33,6 +38,11 @@ public class SearchPage extends SetupFactory {
         ExtentTestManager.log("Searched for " + value.toUpperCase(), this.getClass());
     }
 
+    /**
+     * This method will select the checkbox options for given parameter
+     *
+     * @param value : the desired value to click checkbox
+     */
     public void checkBox(String value) {
         if (value.equalsIgnoreCase("images")) {
             videoOption.click();
@@ -47,6 +57,9 @@ public class SearchPage extends SetupFactory {
         ExtentTestManager.log(value.toUpperCase() + " has been selected", this.getClass());
     }
 
+    /**
+     * This method will validate the title of the page
+     */
     public void validateTitle() {
         String expected = "NASA Image and Video Library";
         try {
@@ -59,6 +72,9 @@ public class SearchPage extends SetupFactory {
         ExtentTestManager.log(actual + " : Title has been validated", this.getClass());
     }
 
+    /**
+     * This method validate the URL & page Title
+     */
     public void logoValidation() {
         logo.click();
         String expectedURL = "https://www.nasa.gov/";

@@ -120,6 +120,7 @@ public class SetupFactory {
 
 
     }
+
     //Driver Initialization
     public WebDriver getLocalDriver(String OS, String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {

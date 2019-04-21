@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * I'm not the author of this class. Took help of the extent report to complete designing this class :)
  */
