@@ -21,15 +21,15 @@
 
 ####`Other Class & resources detail :`
 
-* /NasaImages/src/main/java/base/ExtentTestManager.java
+* /NasaImages/src/main/java/base/ExtentTestManager.java : 
     Extent Reporting Setup Related informations
-* /NasaImages/src/main/java/base/SetupFactory.java
+* /NasaImages/src/main/java/base/SetupFactory.java : 
     Driver initialization & other required setup for reporting
-* /NasaImages/src/main/resources/driver
+* /NasaImages/src/main/resources/driver : 
     required drivers for both win & mac for chrome & mozilla
-* /NasaImages/src/main/resources/log4j.properties
+* /NasaImages/src/main/resources/log4j.properties : 
     log4j proparties
-* /NasaImages/report-config.xml
+* /NasaImages/report-config.xml : 
     config file ror extent report
-* /NasaImages/src/test/resources
+* /NasaImages/src/test/resources : 
     xml runner for TestNG

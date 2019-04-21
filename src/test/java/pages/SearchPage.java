@@ -20,18 +20,11 @@ public class SearchPage extends SetupFactory {
     @FindBy(xpath = "//*[contains(text(), 'Videos')]")
     public WebElement videoOption;
 
-    @FindBy(xpath = "//*[@class='video-asset']")
-    public WebElement videoAllVel;
-
-    @FindBy(xpath = "//*[@class='audio-asset']")
-    public WebElement audioAllVel;
-
-    @FindBy(xpath = "//*[@class='image-asset']")
-    public WebElement imageAllVel;
-
     @FindBy(xpath = "//*[@class='button']")
     public WebElement buttonSearch;
 
+    @FindBy(xpath = "/html//img[@id='logo']")
+    public WebElement logo;
 
     public void searchFor(String value) {
         searchBox.click();
@@ -64,5 +57,17 @@ public class SearchPage extends SetupFactory {
         String actual = webDriver.getTitle();
         Assert.assertEquals(actual, expected);
         ExtentTestManager.log(actual + " : Title has been validated", this.getClass());
+    }
+
+    public void logoValidation() {
+        logo.click();
+        String expectedURL = "https://www.nasa.gov/";
+        String actualURL = webDriver.getCurrentUrl();
+        Assert.assertEquals(actualURL, expectedURL);
+        ExtentTestManager.log(actualURL + " : has been validated", this.getClass());
+        String expectedTitle = "NASA";
+        String actualTitle = webDriver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+        ExtentTestManager.log(actualTitle + " : has been validated", this.getClass());
     }
 }

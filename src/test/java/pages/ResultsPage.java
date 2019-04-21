@@ -8,10 +8,33 @@ import org.openqa.selenium.support.FindBy;
 
 public class ResultsPage extends SetupFactory {
 
-    @FindBy(xpath = "//*[@id=\"updated-search_preloader\"]")
+    @FindBy(xpath = "//*[@id='updated-search_preloader']")
     public WebElement loaderButton;
-    @FindBy(xpath = "//*[@id=\"results-returned\"]")
+    @FindBy(xpath = "//*[@id='results-returned']")
     public WebElement results;
+
+    @FindBy(xpath = "//div[@id='filterBy-Images']/a")
+    public WebElement addImagesFilter;
+
+    @FindBy(xpath = "//div[@id='filterBy-Videos']/a")
+    public WebElement addVideosFilter;
+
+    @FindBy(xpath = "//div[@id='filterBy-Audio']/a")
+    public WebElement addAudioFilter;
+
+    @FindBy(xpath = "//div[@id='updateFilters']/button[.='Update results']")
+    public WebElement updateResult;
+
+    @FindBy(id = "grid-view")
+    public WebElement gridView;
+
+    @FindBy(id = "list-view")
+    public WebElement listView;
+
+    @FindBy(linkText = "Next")
+    public WebElement next;
+    @FindBy(linkText = "Previous")
+    public WebElement previous;
 
     public void resultValidationCount(String value) {
         while (loaderButton.isDisplayed()) {
@@ -32,6 +55,35 @@ public class ResultsPage extends SetupFactory {
         String actualResultCount = results.getText();
         Assert.assertEquals(condition, actualResultCount);
         ExtentTestManager.log(actualResultCount + " has been validated", this.getClass());
+    }
+
+    public void changeFilterTo(String value) {
+        if (value.equalsIgnoreCase("images")) {
+            addImagesFilter.click();
+        } else if (value.equalsIgnoreCase("videos")) {
+            addVideosFilter.click();
+        } else if (value.equalsIgnoreCase("audio")) {
+            addAudioFilter.click();
+        }
+        updateResult.click();
+        ExtentTestManager.log(value.toUpperCase() + " has been selected", this.getClass());
+    }
+
+    public void listAndDetail() {
+        gridView.click();
+        listView.click();
+        gridView.click();
+        ExtentTestManager.log(listView.toString() + " & " + gridView.toString() + " has been selected", this.getClass());
+    }
+
+    public void nextButton() {
+        next.click();
+        if (previous.isDisplayed()) {
+            ExtentTestManager.log("NEXT Button has been clicked", this.getClass());
+
+        } else {
+            Assert.fail();
+        }
     }
 
 }

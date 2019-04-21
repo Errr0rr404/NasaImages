@@ -13,7 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * I'm not the author of this class. Took help of the extent report to complete designing this class :)
+ */
 public class ExtentTestManager {
     static Map<Integer, ExtentTest> extentTestMap = new HashMap<Integer, ExtentTest>();
     private static ExtentReports extent;
@@ -61,7 +63,7 @@ public class ExtentTestManager {
             extent = new ExtentReports(System.getProperty("user.dir") + "/Execution_Report/Report_" + date + ".html", true);
             Reporter.log("Extent Report Directory" + resultDirectory, true);
             extent.addSystemInfo("Host Name", "HostName").addSystemInfo("Environment",
-                    "QA").addSystemInfo("User Name", "Errr0r404");
+                    "QA").addSystemInfo("User Name", "NASA");
             extent.loadConfig(new File(System.getProperty("user.dir") + "/report-config.xml"));
         }
         return extent;

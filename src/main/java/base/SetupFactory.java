@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class SetupFactory {
-    //Extent Report Setup
     public static ExtentReports extent;
     public static String platform = null;
     public static WebDriver webDriver;
@@ -46,6 +45,7 @@ public class SetupFactory {
         return destination;
     }
 
+    //Extent Report Setup
     @BeforeSuite
     public void extentSetup(ITestContext context) {
         ExtentTestManager.setOutputDirectory(context);
@@ -56,11 +56,11 @@ public class SetupFactory {
     @BeforeMethod
     public void startExtent(Method method) {
         String className = method.getDeclaringClass().getSimpleName();
-        String methodName = method.getName().toLowerCase();
         ExtentTestManager.startTest(method.getName());
         ExtentTestManager.getTest().assignCategory(className);
     }
 
+    //Extent Report
     @AfterMethod
     public void afterEachTestMethod(ITestResult result) {
         ExtentTestManager.getTest().getTest().setStartedTime(getTime(result.getStartMillis()));
@@ -88,12 +88,14 @@ public class SetupFactory {
         extent.close();
     }
 
+    //get execution time
     private Date getTime(long millis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
 
+    //print stacktrace
     protected String getStackTrace(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -101,6 +103,7 @@ public class SetupFactory {
         return sw.toString();
     }
 
+    //TestNG Runner Initialization for driver
     @Parameters({"ExecutionPlatform", "url", "browserName", "os"})
     @BeforeMethod
     public void setUp(String ExecutionPlatform,
@@ -117,7 +120,7 @@ public class SetupFactory {
 
 
     }
-
+    //Driver Initialization
     public WebDriver getLocalDriver(String OS, String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {
             if (OS.equalsIgnoreCase("Mac")) {
@@ -137,6 +140,7 @@ public class SetupFactory {
         return webDriver;
     }
 
+    //Driver closing
     @AfterMethod
     public void quit() {
         if (platform.equalsIgnoreCase("web")) {
